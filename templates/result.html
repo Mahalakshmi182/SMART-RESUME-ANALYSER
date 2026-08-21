@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Smart Resume Analyzer</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="card">
+
+        <h1>📊 Resume Analysis</h1>
+
+        <p style="text-align:center;">
+            Here is the analysis of your uploaded resume.
+        </p>
+
+    </div>
+
+
+    <!-- ATS SCORE -->
+
+    <div class="card">
+
+        <h2>🎯 ATS Score</h2>
+
+        <div class="score">
+
+            {{ score }}%
+
+        </div>
+
+        <div class="progress">
+
+            <div
+                class="progress-bar"
+                style="width: {{ score }}%;">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- DETECTED SKILLS -->
+
+    <div class="card">
+
+        <h2>✅ Detected Skills</h2>
+
+        {% if skills %}
+
+            {% for skill in skills %}
+
+                <span class="skill matched">
+                    ✅ {{ skill }}
+                </span>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No skills detected.</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- MISSING SKILLS -->
+
+    <div class="card">
+
+        <h2>⚠️ Missing Skills</h2>
+
+        {% if missing_skills %}
+
+            {% for skill in missing_skills %}
+
+                <span class="skill missing">
+                    ⚠️ {{ skill }}
+                </span>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>🎉 No missing skills!</p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- JOB MATCHING -->
+
+    <div class="card">
+
+        <h2>🎯 Job Description Matching</h2>
+
+        <p>
+            Want to know how well your resume matches a job?
+        </p>
+
+        <br>
+
+        <form action="/job-match" method="GET">
+
+            <input
+                type="hidden"
+                name="resume_text"
+                value="{{ resume_text }}"
+            >
+
+            <button type="submit">
+                🎯 Match With Job Description
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- ANALYZE ANOTHER -->
+
+    <div class="card">
+
+        <a href="/" class="back">
+            ← Analyze Another Resume
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Smart Resume Analyzer</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="card match-result">
+
+        <h1>🎯 Job Match Result</h1>
+
+        <p>
+            Here's how well your resume matches the job description.
+        </p>
+
+    </div>
+
+
+    <!-- SCORE -->
+
+    <div class="card match-result">
+
+        <h2>📊 Job Match Percentage</h2>
+
+        <div class="match-score">
+
+            {{ match_percentage }}%
+
+        </div>
+
+        <div class="progress">
+
+            <div
+                class="progress-bar"
+                style="width: {{ match_percentage }}%;">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MATCHED SKILLS -->
+
+    <div class="card">
+
+        <h2 class="section-title">
+            ✅ Matched Skills
+        </h2>
+
+        <div class="skill-list">
+
+            {% if matched_skills %}
+
+                {% for skill in matched_skills %}
+
+                    <span class="skill matched">
+                        ✅ {{ skill }}
+                    </span>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>No matching skills found.</p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- MISSING SKILLS -->
+
+    <div class="card">
+
+        <h2 class="section-title">
+            ⚠️ Missing Skills
+        </h2>
+
+        <div class="skill-list">
+
+            {% if missing_skills %}
+
+                {% for skill in missing_skills %}
+
+                    <span class="skill missing">
+                        ⚠️ {{ skill }}
+                    </span>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>
+                    🎉 No missing skills!
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- RECOMMENDATION -->
+
+    <div class="card">
+
+        <h2>💡 Recommendation</h2>
+
+        {% if match_percentage >= 80 %}
+
+            <p>
+                🌟 Excellent match! Your resume matches most
+                of the required skills.
+            </p>
+
+        {% elif match_percentage >= 60 %}
+
+            <p>
+                👍 Good match! Consider improving the missing
+                skills to increase your compatibility.
+            </p>
+
+        {% elif match_percentage >= 40 %}
+
+            <p>
+                📚 Your match is moderate. Consider improving
+                the skills listed above.
+            </p>
+
+        {% else %}
+
+            <p>
+                🚀 Your resume needs improvement for this role.
+                Focus on the missing skills.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- IMPROVEMENT SUGGESTIONS -->
+
+    <div class="card">
+
+        <h2>🚀 Resume Improvement Suggestions</h2>
+
+        {% if missing_skills %}
+
+            <p>
+                Based on the job description, these skills
+                could improve your job match:
+            </p>
+
+            <div class="skill-list">
+
+                {% for skill in missing_skills %}
+
+                    <span class="skill missing">
+                        ⚠️ {{ skill }}
+                    </span>
+
+                {% endfor %}
+
+            </div>
+
+            <br>
+
+            <h2>📌 What You Can Do</h2>
+
+            {% for skill in missing_skills %}
+
+                <div class="suggestion">
+
+                    💡 Consider learning or adding
+                    <strong>{{ skill }}</strong>
+                    if you have relevant knowledge or experience.
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>
+                🎉 Excellent! No important skills are missing.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- BACK -->
+
+    <div class="card">
+
+        <a href="/" class="back">
+            ← Analyze Another Resume
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
