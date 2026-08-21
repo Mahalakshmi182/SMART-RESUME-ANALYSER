@@ -1,1 +1,660 @@
+/* =========================================================
+   SMART RESUME ANALYZER - MODERN UI
+========================================================= */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #172033;
+    min-height: 100vh;
+
+    /* Beautiful gradient background */
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(99, 102, 241, 0.25),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(14, 165, 233, 0.25),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #eef2ff 0%,
+            #f8fafc 45%,
+            #e0f2fe 100%
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+    width: 92%;
+    max-width: 1050px;
+    margin: 50px auto;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    padding: 32px;
+
+    border-radius: 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.08),
+        0 5px 15px rgba(15, 23, 42, 0.04);
+
+    margin-bottom: 28px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 25px 55px rgba(15, 23, 42, 0.12),
+        0 8px 20px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+h1 {
+    text-align: center;
+
+    margin-bottom: 18px;
+
+    font-size: 38px;
+    font-weight: 800;
+
+    color: #111827;
+}
+
+h2 {
+    margin-bottom: 18px;
+
+    font-size: 25px;
+    font-weight: 700;
+
+    color: #172033;
+}
+
+h3 {
+    margin-bottom: 12px;
+    color: #1e293b;
+}
+
+p {
+    margin: 10px 0;
+    line-height: 1.7;
+    color: #475569;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+========================================================= */
+
+.page-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.page-header h1 {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page-header p {
+    font-size: 18px;
+    color: #64748b;
+}
+
+
+/* =========================================================
+   UPLOAD BOX
+========================================================= */
+
+.upload-box {
+    text-align: center;
+
+    padding: 55px 30px;
+
+    border: 2px dashed #93c5fd;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(239, 246, 255, 0.9),
+            rgba(245, 243, 255, 0.9)
+        );
+
+    transition: all 0.3s ease;
+}
+
+.upload-box:hover {
+    border-color: #6366f1;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #f5f3ff
+        );
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   FILE INPUT
+========================================================= */
+
+input[type="file"] {
+    margin: 20px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: white;
+
+    border: 1px solid #cbd5e1;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+button {
+    padding: 14px 28px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(37, 99, 235, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skill {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 6px;
+
+    padding: 10px 17px;
+
+    margin: 6px;
+
+    border-radius: 999px;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.skill:hover {
+    transform: translateY(-2px);
+}
+
+
+/* MATCHED */
+
+.matched {
+    background: linear-gradient(
+        135deg,
+        #dcfce7,
+        #bbf7d0
+    );
+
+    color: #166534;
+
+    border: 1px solid #86efac;
+
+    box-shadow:
+        0 4px 12px rgba(22, 101, 52, 0.08);
+}
+
+
+/* MISSING */
+
+.missing {
+    background: linear-gradient(
+        135deg,
+        #fee2e2,
+        #fecaca
+    );
+
+    color: #991b1b;
+
+    border: 1px solid #fca5a5;
+
+    box-shadow:
+        0 4px 12px rgba(153, 27, 27, 0.08);
+}
+
+
+/* =========================================================
+   ATS SCORE
+========================================================= */
+
+.score {
+    text-align: center;
+
+    font-size: 68px;
+
+    font-weight: 900;
+
+    margin: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================================
+   JOB MATCH SCORE
+========================================================= */
+
+.match-result {
+    text-align: center;
+}
+
+.match-score {
+    font-size: 72px;
+
+    font-weight: 900;
+
+    margin: 25px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.progress {
+    width: 100%;
+
+    height: 18px;
+
+    background: #e2e8f0;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset 0 2px 5px rgba(15, 23, 42, 0.08);
+}
+
+.progress-bar {
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #6366f1,
+            #8b5cf6
+        );
+
+    border-radius: 999px;
+
+    box-shadow:
+        0 0 15px rgba(99, 102, 241, 0.4);
+
+    transition: width 1s ease;
+}
+
+
+/* =========================================================
+   SECTION TITLES
+========================================================= */
+
+.section-title {
+    margin-bottom: 20px;
+
+    font-size: 24px;
+
+    font-weight: 750;
+
+    color: #1e293b;
+}
+
+
+/* =========================================================
+   SUGGESTIONS
+========================================================= */
+
+.suggestion {
+    padding: 16px 18px;
+
+    margin: 12px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #eef2ff
+        );
+
+    border-radius: 14px;
+
+    border-left: 5px solid #6366f1;
+
+    color: #334155;
+
+    box-shadow:
+        0 5px 15px rgba(15, 23, 42, 0.04);
+
+    transition:
+        transform 0.2s ease;
+}
+
+.suggestion:hover {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   SKILL LIST
+========================================================= */
+
+.skill-list {
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+textarea {
+    width: 100%;
+
+    min-height: 220px;
+
+    padding: 16px;
+
+    border: 2px solid #e2e8f0;
+
+    border-radius: 14px;
+
+    resize: vertical;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    font-size: 15px;
+
+    color: #334155;
+
+    background: #ffffff;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+textarea:focus {
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.12);
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+    color: #2563eb;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #7c3aed;
+}
+
+.back {
+    display: block;
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    padding: 10px;
+}
+
+
+/* =========================================================
+   SPECIAL RESULT COLORS
+========================================================= */
+
+.success-box {
+    background: linear-gradient(
+        135deg,
+        #ecfdf5,
+        #dcfce7
+    );
+
+    border: 1px solid #86efac;
+
+    color: #166534;
+}
+
+.warning-box {
+    background: linear-gradient(
+        135deg,
+        #fffbeb,
+        #fef3c7
+    );
+
+    border: 1px solid #fcd34d;
+
+    color: #92400e;
+}
+
+.danger-box {
+    background: linear-gradient(
+        135deg,
+        #fff1f2,
+        #fee2e2
+    );
+
+    border: 1px solid #fca5a5;
+
+    color: #991b1b;
+}
+
+
+/* =========================================================
+   ICON / EMOJI HEADINGS
+========================================================= */
+
+.card h2:first-letter {
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        width: 94%;
+        margin: 30px auto;
+    }
+
+    .card {
+        padding: 24px;
+
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .score,
+    .match-score {
+        font-size: 52px;
+    }
+
+    .upload-box {
+        padding: 40px 20px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 20px;
+
+        border-radius: 18px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .score,
+    .match-score {
+        font-size: 45px;
+    }
+
+    .skill {
+        padding: 8px 13px;
+        font-size: 13px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    input[type="file"] {
+        width: 100%;
+        margin: 15px 0;
+    }
+}
