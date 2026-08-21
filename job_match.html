@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Smart Resume Analyzer</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="card">
+
+        <h1>🎯 Job Description Matcher</h1>
+
+        <p style="text-align: center;">
+            Compare your resume with a company's job description.
+        </p>
+
+    </div>
+
+
+    <!-- JOB DESCRIPTION FORM -->
+
+    <div class="card">
+
+        <h2>📝 Job Description</h2>
+
+        <p>
+            Paste the job description below.
+        </p>
+
+        <br>
+
+        <form action="/job-match" method="POST">
+
+            <!-- Carry resume text -->
+
+            <input
+                type="hidden"
+                name="resume_text"
+                value="{{ resume_text }}"
+            >
+
+            <textarea
+                name="job_description"
+                rows="15"
+                placeholder="Paste the job description here..."
+                required></textarea>
+
+            <br><br>
+
+            <button type="submit">
+                🔍 Match Resume With Job
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- HOW IT WORKS -->
+
+    <div class="card">
+
+        <h2>💡 How It Works</h2>
+
+        <p>📄 Your resume is already loaded.</p>
+
+        <p>📝 Paste the company's job description.</p>
+
+        <p>🔍 Click Match Resume With Job.</p>
+
+        <p>📊 Get your Job Match percentage.</p>
+
+        <p>✅ See matched skills.</p>
+
+        <p>⚠️ See missing skills.</p>
+
+    </div>
+
+
+    <!-- BACK -->
+
+    <div class="card">
+
+        <a href="/" class="back">
+            ← Back to Resume Analyzer
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

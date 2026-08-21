@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>Smart Resume Analyzer</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>🎯 Smart Resume Analyzer</h1>
+
+            <p style="text-align: center;">
+                Upload your resume and analyze your skills,
+                ATS score, and job compatibility.
+            </p>
+
+        </div>
+
+
+        <div class="card upload-box">
+
+            <h2>📤 Upload Your Resume</h2>
+
+            <p>
+                Upload your resume in PDF format
+            </p>
+
+
+            <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+                <input
+                    type="file"
+                    name="resume"
+                    accept=".pdf"
+                    required
+                >
+
+                <br><br>
+
+                <button type="submit">
+                    🔍 Analyze Resume
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>✨ What This Tool Does</h2>
+
+            <p>✅ Extracts text from your resume</p>
+
+            <p>✅ Detects technical skills</p>
+
+            <p>✅ Calculates ATS score</p>
+
+            <p>✅ Shows missing skills</p>
+
+            <p>✅ Matches your resume with job descriptions</p>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
